@@ -1,0 +1,18 @@
+runtime: python312
+instance_class: F1
+service: app-avisti-admin
+
+handlers:
+  # Servir todos los assets de la carpeta dist/assets que genera Vite
+  - url: /assets
+    static_dir: dist/assets
+
+  # Servir archivos estáticos en la raíz (favicon, manifest, etc.)
+  - url: /(.*\.(js|css|png|jpg|jpeg|gif|ico|json|svg|woff|woff2|ttf|webp))
+    static_files: dist/\1
+    upload: dist/(.*\.(js|css|png|jpg|jpeg|gif|ico|json|svg|woff|woff2|ttf|webp))
+
+  # Redirigir el resto de solicitudes a index.html (Soporte para React Router SPA)
+  - url: /.*
+    static_files: dist/index.html
+    upload: dist/index.html
