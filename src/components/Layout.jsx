@@ -1,7 +1,9 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import {
   Boxes,
+  Building2,
   ClipboardList,
+  HeartHandshake,
   LayoutDashboard,
   LogOut,
   ShieldCheck,
@@ -14,6 +16,8 @@ const navItems = [
   { to: '/equipments', label: 'Equipos', icon: LayoutDashboard },
   { to: '/import', label: 'Importar datos', icon: UploadCloud },
   { to: '/data-loads', label: 'Cargas y logs', icon: ClipboardList },
+  { to: '/admin/entities', label: 'Entidades', icon: Building2 },
+  { to: '/admin/donation-requests', label: 'Solicitudes de donación', icon: HeartHandshake },
 ]
 
 const pageTitles = {
@@ -21,12 +25,16 @@ const pageTitles = {
   '/equipments': 'Equipos',
   '/import': 'Importar datos',
   '/data-loads': 'Cargas y logs',
+  '/admin/entities': 'Entidades',
+  '/admin/donation-requests': 'Solicitudes de donación',
 }
 
 function Layout() {
   const { user, logout } = useAuth()
   const location = useLocation()
-  const currentTitle = pageTitles[location.pathname] || 'Dashboard'
+  const currentTitle =
+    pageTitles[location.pathname] ||
+    (location.pathname.startsWith('/admin/donation-requests/') ? 'Detalle de solicitud' : 'Dashboard')
 
   return (
     <div className="flex min-h-screen w-full overflow-hidden bg-slate-100 text-slate-800">

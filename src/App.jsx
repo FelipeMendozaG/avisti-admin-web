@@ -6,6 +6,9 @@ import Products from './pages/Products.jsx'
 import Equipments from './pages/Equipments.jsx'
 import ImportData from './pages/ImportData.jsx'
 import DataLoads from './pages/DataLoads.jsx'
+import EntitiesAdmin from './pages/EntitiesAdmin.jsx'
+import DonationRequests from './pages/DonationRequests.jsx'
+import DonationRequestDetail from './pages/DonationRequestDetail.jsx'
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
         <Route path="/equipments" element={<Equipments />} />
         <Route path="/import" element={<ImportData />} />
         <Route path="/data-loads" element={<DataLoads />} />
+        <Route path="/admin/entities" element={<EntitiesAdmin />} />
+        <Route path="/admin/donation-requests" element={<DonationRequests />} />
+        <Route path="/admin/donation-requests/:id" element={<DonationRequestDetail />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
